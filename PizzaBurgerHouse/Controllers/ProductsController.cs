@@ -1,11 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PizzaBurgerHouse.Application.Commands.ImageCommand;
 using PizzaBurgerHouse.Application.Commands.ProductCommand;
 using PizzaBurgerHouse.Application.Queries;
 using PizzaBurgerHouse.Domain.Entities;
-using PizzaBurgerHouse.Infrastructure.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,7 +20,7 @@ namespace PizzaBurgerHouse.Controllers
 
       
 
-        public ProductsController( IMediator _mediator, MyApplicationContext context)
+        public ProductsController( IMediator _mediator)
         {        
             mediator = _mediator;
            
@@ -28,33 +28,24 @@ namespace PizzaBurgerHouse.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
         [HttpGet]    
-        public async Task<IEnumerable<Product>> GetProducsAsync()
+        public async Task<IEnumerable<Product>> GetAllProducsAsync()
         {
-          return await mediator.Send(new GetAllProductsQuery());        
+          return await mediator.Send(new GetAllProducts());        
         }
 
 
 
         [HttpGet("{id}")]
-        //[Authorize]
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            return await mediator.Send(new GetProductByIdQuery(id));
+            return await mediator.Send(new GetProductById(id));
         }
 
 
 
         [HttpPost]
+        [Authorize]
         public async Task AddProductAsync(Product product) //
         {
             await mediator.Send(new CreateProduct(product));
@@ -62,16 +53,9 @@ namespace PizzaBurgerHouse.Controllers
         }
 
 
-     
-
-
-
-
-
-
 
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public async Task DeleteProductAsync(int id)
         {
             await mediator.Send(new DeleteProduct(id));
@@ -80,7 +64,7 @@ namespace PizzaBurgerHouse.Controllers
 
 
         [HttpPatch]
-        //[Authorize]
+        [Authorize]
         public async Task UpdateProductAsync(Product product)
         {
 
@@ -91,7 +75,7 @@ namespace PizzaBurgerHouse.Controllers
 
                         
         [HttpPost("upload")]
-        //[Authorize]
+        [Authorize]
         public async Task<int> AddImageAsync(IFormFile uploadedFile)
         {
             return await mediator.Send(new AddImage(uploadedFile));

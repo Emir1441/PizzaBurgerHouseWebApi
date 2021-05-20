@@ -29,10 +29,7 @@ namespace PizzaBurgerHouse.Application.Commands.ProductCommand
         }
         public async Task<Unit> Handle(CreateProduct request, CancellationToken cancellationToken)
         {
-     
-
             await productRepo.CreateProductAsync(request.Product);
-
             return  Unit.Value;
         }
 

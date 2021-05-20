@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PizzaBurgerHouse.Application.Queries
 {
-    public class GetAllProductsQuery : IRequest<IEnumerable<Product>>
+    public class GetAllProducts : IRequest<IEnumerable<Product>>
     {
 
     }
 
-    public class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
+    public class GetAllProductsHandler : IRequestHandler<GetAllProducts, IEnumerable<Product>>
     {
         private readonly IProductRepository productRepo;
 
@@ -21,7 +21,7 @@ namespace PizzaBurgerHouse.Application.Queries
             productRepo = _productRepo;
         }
 
-        public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Product>> Handle(GetAllProducts request, CancellationToken cancellationToken)
         {
             return await productRepo.GetAllProductsAsync();                  
         }

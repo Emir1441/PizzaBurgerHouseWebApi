@@ -42,6 +42,7 @@ namespace PizzaBurgerHouse
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,16 +51,17 @@ namespace PizzaBurgerHouse
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pizza Burger House");
-                });
+               
 
             }   
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseSwagger();
-         
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pizza Burger House");
+            });
+
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
@@ -68,7 +70,7 @@ namespace PizzaBurgerHouse
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapFallbackToController("Index", "FallBack");
+                endpoints.MapFallbackToController("Index", "FallBack");
             });
 
         }

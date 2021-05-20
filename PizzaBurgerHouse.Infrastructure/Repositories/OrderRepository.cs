@@ -12,7 +12,7 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-      private readonly  MyApplicationContext db;
+        private readonly  MyApplicationContext db;
         private readonly IMapper mapper;
  
 
@@ -25,7 +25,7 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
         public async Task<IEnumerable<Order>> GetAllDeliveryOrdersAsync()
         {
            
-            return await db.Orders.OrderByDescending(x => x.CreateOrder).Include(x => x.PaymentMethod)
+            return await db.Orders.AsNoTracking().OrderByDescending(x => x.CreateOrder).Include(x => x.PaymentMethod)
                 .Include(x => x.DeliveryOrder).Include(x => x.Products).AsNoTracking().ToListAsync();
 
         }
@@ -33,7 +33,7 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
 
         public async Task<Order> GetDeliveryOrderByIdAsync(int id)
         {
-           return await db.Orders.Include(x => x.Products).AsNoTracking().FirstOrDefaultAsync(x => x.OrderId == id);
+           return await db.Orders.AsNoTracking().Include(x => x.Products).AsNoTracking().FirstOrDefaultAsync(x => x.OrderId == id);
         }
 
  
@@ -43,17 +43,7 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
             await db.Orders.AddAsync(order);
             await db.SaveChangesAsync();
             var orderConfirmation = mapper.Map<OrderConfirmation>(order);
-            return orderConfirmation;
-
-
-            //OrderConfirmation respose = new OrderConfirmation
-            //{
-            //    OrderId = order.OrderId,
-            //    OrderName = order.CustomerName,
-            //    OrderPhone = order.CustomerPhoneNumber,
-            //    Amount = order.PaymentMethod.TotalPrice
-            //};
-            //return respose;
+            return orderConfirmation;  
 
         }
 

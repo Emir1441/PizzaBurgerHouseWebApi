@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace PizzaBurgerHouse.Application.Queries
 {
-    public class GetProductByIdQuery: IRequest<Product>
+    public class GetProductById: IRequest<Product>
     {
         public int Id { get; set; }
-        public GetProductByIdQuery(int id)
+        public GetProductById(int id)
         {
             Id = id;
         }
     }
 
-    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product>
+    public class GetProductByIdQueryHandler : IRequestHandler<GetProductById, Product>
     {
         private readonly IProductRepository productRepo;
 
@@ -24,7 +24,7 @@ namespace PizzaBurgerHouse.Application.Queries
             productRepo = _productRepo;
         }
 
-        public Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+        public Task<Product> Handle(GetProductById request, CancellationToken cancellationToken)
         {
           return productRepo.GetProductByIdAsync(request.Id);
            

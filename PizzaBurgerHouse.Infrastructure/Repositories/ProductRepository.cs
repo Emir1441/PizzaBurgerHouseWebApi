@@ -24,13 +24,13 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {   
-            return await db.Products.Include(x => x.UploadImage).AsNoTracking().ToListAsync(); 
+            return await db.Products.Include(x => x.UploadImage).ToListAsync(); 
         }
 
 
         public async Task<Product> GetProductByIdAsync(int id)
         {      
-            return await db.Products.Include(x => x.UploadImage).AsNoTracking().FirstOrDefaultAsync(product => product.ProductId == id);
+            return await db.Products.Include(x => x.UploadImage).FirstOrDefaultAsync(product => product.ProductId == id);
         }
 
 
@@ -42,7 +42,7 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
 
 
 
-        public async Task UpdateProductAsync(Product product)
+        public async Task UpdateProductAsync( Product product)
         {    
             db.Products.Update(product);
             await db.SaveChangesAsync();

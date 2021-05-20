@@ -21,7 +21,7 @@ namespace PizzaBurgerHouse.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<IEnumerable<Order>> GetAllDeliveryOrdersAsync()
         {
             return await mediatr.Send(new GetAllDeliveryOrders());
@@ -29,7 +29,7 @@ namespace PizzaBurgerHouse.Controllers
 
        
         [HttpGet("{id}")]
-        //[Authorize]
+        [Authorize]
         public async Task<Order> GetAllDeliveryOrderByIdAsync(int id)
         {
             return await mediatr.Send(new GetDeliveryOrderById(id));
