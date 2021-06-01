@@ -16,21 +16,15 @@ namespace PizzaBurgerHouse.Application.Tests.Queries.OrderQueries
         {
             // Arrange
             var mockOrders = new Mock<IOrderRepository>();
-         
             var expected = new Fixture().Create<Task<Order>>();
             mockOrders.Setup(x => x.GetDeliveryOrderByIdAsync(It.IsAny<int>())).Returns(expected);
-
-
             //Act
             var sut = new GetDeliveryOrderByIdHandler(mockOrders.Object);
             GetDeliveryOrderById byIdQuery = new GetDeliveryOrderById(It.IsAny<int>());
             var actual =  await sut.Handle(byIdQuery, new CancellationToken());
-
             // Assert
             mockOrders.VerifyAll();
             Assert.NotNull(actual);
-
-
         }
     }
 }

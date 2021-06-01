@@ -9,15 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F0145C7E-DCC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{083F0935-D54E-4386-9B32-2E5310DCFFBE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaBurgerHouse.Tests", "PizzaBurgerHouse.Tests\PizzaBurgerHouse.Tests.csproj", "{16B0010F-2086-475E-9B37-2345F3A986E2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaBurgerHouse.Infrastructure", "PizzaBurgerHouse.Infrastructure\PizzaBurgerHouse.Infrastructure.csproj", "{9C7A1FE7-7073-4DD8-B312-FB9B970D62C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaBurgerHouse.Application", "PizzaBurgerHouse.Application\PizzaBurgerHouse.Application.csproj", "{3BCAE898-7C9B-49D3-B871-D60641011724}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaBurgerHouse.Domain", "PizzaBurgerHouse.Core\PizzaBurgerHouse.Domain.csproj", "{E54A5097-3AA9-4CB7-A4B6-13B23F15FD42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaBurgerHouse.Application.Tests", "PizzaBurgerHouse.Application.Tests\PizzaBurgerHouse.Application.Tests.csproj", "{C546ECC0-0AB5-4B4D-9102-6BF6EBA4C6E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaBurgerHouse.Application.Tests", "PizzaBurgerHouse.Application.Tests\PizzaBurgerHouse.Application.Tests.csproj", "{C546ECC0-0AB5-4B4D-9102-6BF6EBA4C6E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{33B2D18B-7A21-4916-A7C6-3AB2CCBD4C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33B2D18B-7A21-4916-A7C6-3AB2CCBD4C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33B2D18B-7A21-4916-A7C6-3AB2CCBD4C2B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16B0010F-2086-475E-9B37-2345F3A986E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16B0010F-2086-475E-9B37-2345F3A986E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16B0010F-2086-475E-9B37-2345F3A986E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16B0010F-2086-475E-9B37-2345F3A986E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C7A1FE7-7073-4DD8-B312-FB9B970D62C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C7A1FE7-7073-4DD8-B312-FB9B970D62C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C7A1FE7-7073-4DD8-B312-FB9B970D62C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,7 +49,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33B2D18B-7A21-4916-A7C6-3AB2CCBD4C2B} = {F0145C7E-DCC3-4544-AA9B-0FDCB823E26A}
-		{16B0010F-2086-475E-9B37-2345F3A986E2} = {083F0935-D54E-4386-9B32-2E5310DCFFBE}
 		{9C7A1FE7-7073-4DD8-B312-FB9B970D62C1} = {F0145C7E-DCC3-4544-AA9B-0FDCB823E26A}
 		{3BCAE898-7C9B-49D3-B871-D60641011724} = {F0145C7E-DCC3-4544-AA9B-0FDCB823E26A}
 		{E54A5097-3AA9-4CB7-A4B6-13B23F15FD42} = {F0145C7E-DCC3-4544-AA9B-0FDCB823E26A}

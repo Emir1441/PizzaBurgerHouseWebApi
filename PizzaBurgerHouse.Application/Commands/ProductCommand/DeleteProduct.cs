@@ -13,7 +13,6 @@ namespace PizzaBurgerHouse.Application.Commands.ProductCommand
             Id = id;
         }
     }
-
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProduct, Unit>
     {
         private readonly IProductRepository productRepo;
@@ -21,7 +20,6 @@ namespace PizzaBurgerHouse.Application.Commands.ProductCommand
         {
             productRepo = _productRepo;
         }
-
         public async Task<Unit> Handle(DeleteProduct request, CancellationToken cancellationToken)
         {
             await productRepo.DeleteProductAsync(request.Id);

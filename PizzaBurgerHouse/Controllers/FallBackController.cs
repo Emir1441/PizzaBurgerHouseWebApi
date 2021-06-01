@@ -3,7 +3,6 @@ using System.IO;
 
 namespace PizzaBurgerHouse.Controllers
 {
-
     public class FallBackController : Controller
     {
         public IActionResult Index()

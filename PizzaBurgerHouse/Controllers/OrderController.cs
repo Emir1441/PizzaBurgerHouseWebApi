@@ -17,24 +17,21 @@ namespace PizzaBurgerHouse.Controllers
         public OrderController(IMediator _mediatr)
         {
             mediatr = _mediatr;
-          
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<IEnumerable<Order>> GetAllDeliveryOrdersAsync()
         {
             return await mediatr.Send(new GetAllDeliveryOrders());
         }
 
-       
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<Order> GetAllDeliveryOrderByIdAsync(int id)
         {
             return await mediatr.Send(new GetDeliveryOrderById(id));
         }
-
 
         [HttpPost]
         [AllowAnonymous]

@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace PizzaBurgerHouse.Application.Queries.CategoryQueries
 {
-   public class GetAllCategory : IRequest<IEnumerable<Category>> 
-    {
-
-    }
-
+    public class GetAllCategory : IRequest<IEnumerable<Category>> { }
     public class GetAllCategoryHandler : IRequestHandler<GetAllCategory, IEnumerable<Category>>
     {
         private readonly ICategoryRepository categoryRepo;
-
         public GetAllCategoryHandler(ICategoryRepository _categoryRepo)
         {
             categoryRepo = _categoryRepo;

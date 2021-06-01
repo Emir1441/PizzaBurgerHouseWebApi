@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
-using PizzaBurgerHouse.DTO;
+using PizzaBurgerHouse.Application.Dto;
 
 namespace PizzaBurgerHouse.Validators
 {
     public class LoginValidator: AbstractValidator<LoginDto>
     {
-
         public LoginValidator()
         {
             RuleFor(x => x.Email).EmailAddress();

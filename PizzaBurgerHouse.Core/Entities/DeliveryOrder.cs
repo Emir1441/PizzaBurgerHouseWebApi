@@ -8,6 +8,5 @@
         public string CustomerHouseNumber { get; set; }
         public string CustomerApartmentNumber { get; set; }
         public string CustomerEntranceNumber { get; set; }
-      
     }
 }

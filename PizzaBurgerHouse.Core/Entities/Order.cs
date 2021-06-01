@@ -10,12 +10,8 @@ namespace PizzaBurgerHouse.Domain.Entities
         public string CustomerPhoneNumber { get; set; }
         public string CustomerEmail { get; set; }
         public DateTime CreateOrder { get; set; } = DateTime.Now;
-
         public IEnumerable<CartLine> Products { get; set; }
-      
         public DeliveryOrder DeliveryOrder { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-      
-
     }
 }

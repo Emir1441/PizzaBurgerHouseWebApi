@@ -11,9 +11,8 @@ namespace PizzaBurgerHouse.Validators
             //RuleFor(x => x.ProductName).NotNull();
             //RuleFor(x => x.ProductDescription).NotNull();
             //RuleFor(x => x.Price).NotNull();
-            //RuleFor(x => x.ProductWeight).NotNull();
+            //RuleFor(x => x.ProductWeight).Null();
             //RuleFor(x => x.UploadImageId).NotNull();
         }
-
     }
 }

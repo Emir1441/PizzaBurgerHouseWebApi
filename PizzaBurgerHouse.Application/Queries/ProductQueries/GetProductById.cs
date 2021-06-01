@@ -14,20 +14,16 @@ namespace PizzaBurgerHouse.Application.Queries
             Id = id;
         }
     }
-
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductById, Product>
     {
         private readonly IProductRepository productRepo;
-
         public GetProductByIdQueryHandler(IProductRepository _productRepo)
         {
             productRepo = _productRepo;
         }
-
         public Task<Product> Handle(GetProductById request, CancellationToken cancellationToken)
         {
-          return productRepo.GetProductByIdAsync(request.Id);
-           
+          return productRepo.GetProductByIdAsync(request.Id);    
         }
     }
 }

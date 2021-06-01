@@ -21,47 +21,45 @@ namespace PizzaBurgerHouse
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(ObjectsMapper));
             var assembly = AppDomain.CurrentDomain.Load("PizzaBurgerHouse.Application");
             services.AddMediatR(assembly);
-            services.CorsConfiguration();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
             services.AuthConfiguration();
             services.SwaggerConfiguration();
             services.FluentValidationConfiguration();
-
             services.AddDbContext<MyApplicationContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("PizzaBurgerHouse"));
             });
-
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-               
-
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pizza Burger House");
+                });
             }   
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pizza Burger House");
-            });
-
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();

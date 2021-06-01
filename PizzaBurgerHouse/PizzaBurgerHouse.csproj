@@ -8,6 +8,13 @@
     <UserSecretsId>531c0e65-bcb4-47e7-83d2-2b40c45f6da3</UserSecretsId>
   </PropertyGroup>
 
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   
     
 

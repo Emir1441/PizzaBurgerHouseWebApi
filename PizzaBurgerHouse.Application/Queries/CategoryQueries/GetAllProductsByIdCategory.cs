@@ -15,16 +15,13 @@ namespace PizzaBurgerHouse.Application.Queries.CategoryQueries
             Id = id;
         }
     }
-
     public class GetAllProductsByIdCategoryHandler : IRequestHandler<GetAllProductsByIdCategory, IEnumerable<Product>>
     {
         private readonly ICategoryRepository categoryRepo;
-
         public GetAllProductsByIdCategoryHandler(ICategoryRepository _categoryRepo)
         {
             categoryRepo = _categoryRepo;
         }
-
         public async Task<IEnumerable<Product>> Handle(GetAllProductsByIdCategory request, CancellationToken cancellationToken)
         {
             return await categoryRepo.GetAllProductsByIdCategoryAsync(request.Id);

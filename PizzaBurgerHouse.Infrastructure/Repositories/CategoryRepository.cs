@@ -16,23 +16,19 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
             db = context;
         }
 
-
         public async Task<IEnumerable<Category>> GetAllCategoryAsync()
         {
             return await db.Categories.AsNoTracking().ToListAsync();
         }
-
 
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
             return await db.Categories.FirstOrDefaultAsync(category => category.CategoryId == id);
         }
 
-
-
         public async Task<IEnumerable<Product>> GetAllProductsByIdCategoryAsync(int id)
         {
-            return await db.Products.Where(x => x.CategoryId == id).Include(x => x.UploadImage).ToListAsync();
+            return await db.Products.Where(x => x.CategoryId == id).ToListAsync();
         }
 
 
@@ -43,17 +39,10 @@ namespace PizzaBurgerHouse.Infrastructure.Repositories
         }
 
         public async Task UpdateCategoryAsync( Category category)
-        {
-
-
-           
-
-
-             db.Categories.Update(category);
+        {     
+            db.Categories.Update(category);
             await db.SaveChangesAsync();
         }
-
-
         public async Task DeleteCategoryAsync(int id)
         {
             var category = await db.Categories.FirstOrDefaultAsync(category => category.CategoryId == id);
